@@ -22,5 +22,15 @@
         public function getConnection() {
             return $this->connection;
         }
+
+        public function getConnectionBool() {
+            return $this->connection ? true : false;
+        }
+
+        public function closeConnection() {
+            if ($this->connection) {
+                $this->connection->close();
+            }
+        }
     }
 ?>
