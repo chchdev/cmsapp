@@ -23,8 +23,9 @@ A simple and flexible Content Management System (CMS) built with PHP and MySQL.
     ```
 2. Copy files to your web server directory.
 3. Import the `database.sql` file into your MySQL database.
-4. Configure database settings in `config.php`.
-5. Access the app via your browser.
+4. Configure database settings in `config/config.php`.
+5. Run `config/first_time.php`. Due to security this should be CHMOD'd appropritately and it is recommended only using it for testing. 
+6. Access the app via your browser.
 
 ## Usage
 
