@@ -1,4 +1,9 @@
 <!-- public/register.php -->
+ <?php
+    require_once __DIR__ . '/../src/middleware/CsrfMiddleware.php';
+    $csrfMiddleware = new CsrfMiddleware();
+    $csrfToken = $csrfMiddleware->generateToken();
+?>
 <!DOCTYPE html>
 <html>
 <head>
