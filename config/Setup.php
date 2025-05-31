@@ -16,9 +16,9 @@ class Setup {
         if ($connection) {
             $sql = "CREATE TABLE IF NOT EXISTS users (
                         id INT AUTO_INCREMENT PRIMARY KEY,
-                        username VARCHAR(50) NOT NULL,
+                        username VARCHAR(50) NOT NULL UNIQUE,
                         password VARCHAR(255) NOT NULL,
-                        email VARCHAR(100) NOT NULL,
+                        email VARCHAR(100) NOT NULL UNIQUE,
                         role ENUM('admin', 'editor', 'viewer') DEFAULT 'viewer',
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -51,7 +51,7 @@ class Setup {
                     CREATE TABLE IF NOT EXISTS media (
                         id INT AUTO_INCREMENT PRIMARY KEY,
                         user_id INT NOT NULL,
-                        file_path VARCHAR(255) NOT NULL,
+                        file_path VARCHAR(255) NOT NULL
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         FOREIGN KEY (user_id) REFERENCES users(id)
                     );
