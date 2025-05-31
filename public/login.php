@@ -16,7 +16,6 @@
             <input type="password" name="password" required>
         </label>
         <br>
-        <!-- CSRF token could be added here -->
         <input type="submit" value="Login">
     </form>
 

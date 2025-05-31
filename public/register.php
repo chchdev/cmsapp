@@ -24,7 +24,6 @@
             <input type="password" name="confirm_password" required>
         </label>
         <br>
-        <!-- CSRF token could be added here -->
         <input type="submit" value="Register">
     </form>
     
