@@ -121,12 +121,18 @@ class AuthController {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
+
+            if (!isset ($_SESSION['user_id'])) {
+                header('Location: ../login.php');
+                exit();
+            }
+
             session_unset();
             session_destroy();
-            return json_encode([
-                'status'  => 'success', 
-                'message' => 'Logged out successfully.'
-            ]);
+          
+            // Redirect to login page after logout
+            header('Location: ../login.php');
+            exit();
         }
     }
 }
