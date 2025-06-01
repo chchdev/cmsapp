@@ -1,0 +1,97 @@
+@use "sass:color";
+
+// Variables for easy theming
+$primary-color: #3498db;
+$background-color: #f9f9f9;
+$text-color: #333;
+$form-background: #fff;
+$border-radius: 5px;
+$font-family: 'Helvetica Neue', Helvetica, sans-serif;
+
+// Global styles for authentication pages
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: $font-family;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+// Container for the login, register, and logout forms
+.auth-container {
+  width: 400px;
+  padding: 20px 30px;
+  background-color: $form-background;
+  border: 1px solid color.adjust($primary-color, $lightness: 40%);
+  border-radius: $border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+// Headings
+h2 {
+  color: $primary-color;
+  margin-bottom: 20px;
+}
+
+// Form styling
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 1rem;
+
+    // Optionally, if you want to wrap label text in a <span>
+    span {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    font-size: 1rem;
+  }
+
+  input[type="hidden"] {
+    display: none; // hidden CSRF token, no special styles needed
+  }
+
+  input[type="submit"] {
+    margin-top: 20px;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+  }
+}
+
+// Paragraph for any messages or instructions
+.auth-message {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: $text-color;
+}

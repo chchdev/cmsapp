@@ -74,21 +74,26 @@ class AuthController {
                 ]);
             }
 
-            // Retrieve user record based on username
-            $stmt = $this->conn->prepare("SELECT id, password FROM users WHERE username = ?");
+            // Retrieve user record based on username, including the role
+            // Note: using "id" here as per your database column
+            $stmt = $this->conn->prepare("SELECT id, password, role FROM users WHERE username = ?");
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $stmt->store_result();
 
             if ($stmt->num_rows > 0) {
-                $stmt->bind_result($userId, $hashedPassword);
+                // Use $id to correspond to the "id" column in your database
+                $stmt->bind_result($id, $hashedPassword, $role);
                 $stmt->fetch();
 
                 if (password_verify($password, $hashedPassword)) {
                     if (session_status() === PHP_SESSION_NONE) {
                         session_start();
                     }
-                    $_SESSION['user_id'] = $userId;
+                    // Save the id in session under 'user_id'
+                    $_SESSION['user_id'] = $id;
+                    $_SESSION['role'] = $role; // Store the user's role in the session
+                    
                     return json_encode([
                         'status'  => 'success', 
                         'message' => 'Login successful.'
@@ -107,6 +112,9 @@ class AuthController {
             }
         }
     }
+
+
+
 
     public function logout() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

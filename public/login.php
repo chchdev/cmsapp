@@ -9,22 +9,26 @@ $csrfToken = $csrfMiddleware->generateToken();
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link rel=stylesheet href="assets/css/auth.css">
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-        <label>Username:
-            <input type="text" name="username" required>
-        </label>
-        <br>
-        <label>Password:
-            <input type="password" name="password" required>
-        </label>
-        <br>
-        <!-- Add the CSRF token as a hidden input -->
-        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken); ?>">
-        <input type="submit" value="Login">
-    </form>
+    <div class="auth-container">
+        <h2>Login</h2>
+        <form action="login.php" method="post">
+            <label>Username:
+                <input type="text" name="username" required>
+            </label>
+            <br>
+            <label>Password:
+                <input type="password" name="password" required>
+            </label>
+            <br>
+            <!-- Add the CSRF token as a hidden input -->
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrfToken); ?>">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    
 
     <?php
     // Process login if form is submitted

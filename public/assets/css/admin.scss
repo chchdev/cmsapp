@@ -1,0 +1,100 @@
+@use "sass:color";
+
+// Variables for easy theme adjustments
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$text-color: #333;
+$background-color: #f8f8f8;
+$nav-background: #2c3e50;
+$nav-text-color: #ecf0f1;
+$footer-background: #bdc3c7;
+$font-family: 'Arial', sans-serif;
+
+// Global styling for the admin dashboard
+.admin-dashboard {
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+
+  // Header styles
+  #admin-header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 2.5em;
+      color: $primary-color;
+      margin: 0;
+    }
+  }
+
+  // Navigation styles
+  #admin-nav {
+    background-color: $nav-background;
+    border-radius: 5px;
+    padding: 10px;
+
+    .admin-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .nav-item {
+        margin: 5px 10px;
+
+        .nav-link {
+          text-decoration: none;
+          color: $nav-text-color;
+          font-weight: bold;
+          padding: 8px 12px;
+          border: 1px solid transparent;
+          border-radius: 3px;
+          transition: background-color 0.3s ease, border-color 0.3s ease;
+
+          &:hover {
+            background-color: color.adjust($nav-background, $lightness: 10%);
+            border-color: color.adjust($nav-background, $lightness: 10%);
+          }
+        }
+      }
+    }
+  }
+
+  // Content styles
+  #admin-content {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+  }
+
+  // Footer styles
+  #admin-footer {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: $footer-background;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 0.9em;
+
+    p {
+      margin: 0;
+    }
+  }
+}
