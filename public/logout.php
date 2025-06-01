@@ -1,5 +1,14 @@
 <?php
 // logout.php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    // User is not logged in, redirect to login page
+    header('Location: login.php');
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once __DIR__ . '/../src/controllers/AuthController.php';

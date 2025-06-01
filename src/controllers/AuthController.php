@@ -123,7 +123,7 @@ class AuthController {
             }
 
             if (!isset ($_SESSION['user_id'])) {
-                header('Location: ../login.php');
+                header('Location: login.php');
                 exit();
             }
 
@@ -131,7 +131,7 @@ class AuthController {
             session_destroy();
           
             // Redirect to login page after logout
-            header('Location: ../login.php');
+            header('Location: login.php');
             exit();
         }
     }
